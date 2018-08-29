@@ -44,7 +44,7 @@ class VoteForm extends Component{
                         </div>
                         <div className="form-group">
                             <label htmlFor="txtZipCode">Zip Code</label>
-                            <input type="text" className="form-control" id="txtZipCode" placeholder="Enter Zip Code" required/>       
+                            <input type="text" className="form-control" id="txtZipCode" placeholder="Enter Zip Code" required maxlength="5"/>       
                         </div>
                         <button type="submit" className="btn btn-lg btn-success btn-block">Submit</button>
                     </form>
