@@ -6,7 +6,7 @@ class Banner extends Component {
     render(){
         return(
             <div className="jumbotron">
-                <VoteForm />
+                <VoteForm pickleTypes={this.props.getPickleTypes()}/>
             </div>
         );
     }
