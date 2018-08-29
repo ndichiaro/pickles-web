@@ -31,12 +31,12 @@ class VoteForm extends Component{
                             <input type="text" className="form-control" id="txtLastName" placeholder="Enter Last Name" />       
                         </div>
                         <div className="form-group">
-                            <label for="email">Email Address</label>
+                            <label htmlFor="email">Email Address</label>
                             <input type="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter Email" />
                             <small id="emailHelp" className="form-text text-muted">We'll never send you anything or share your email with anyone else.</small>
                         </div>
                         <div className="form-group">
-                            <label for="pickleTypeSelect">Pickle Type</label>
+                            <label htmlFor="pickleTypeSelect">Pickle Type</label>
                             <select className="form-control" id="pickleTypeSelect" required>
                                 <option value="">Select Pickle Type</option>
                                 {this.renderPickleTypeOptions()}
