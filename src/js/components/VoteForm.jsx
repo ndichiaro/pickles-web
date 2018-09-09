@@ -18,11 +18,23 @@ class VoteForm extends Component{
         return options;
     }
 
+    renderError(){
+        if(this.props.error && this.props.message !== ''){
+            return <div className="error">{this.props.message}</div>
+        }
+
+        if(this.props.success){
+            return <div className="success">Thanks for your vote!</div>
+        }
+
+        return;
+    }
     render(){
         return(
             <div className="col-md-4">
                 <div className="vote-form">
-                    <form onChange={this.props.onChange}>
+                    {this.renderError()}
+                    <form onChange={this.props.onChange} onSubmit={this.props.onSubmit}>
                         <div className="form-group">
                             <label htmlFor="txtFirstName">First Name</label>
                             <input type="text" className="form-control" id="txtFirstName" placeholder="Enter First Name" name="firstName" value={this.props.data.firstName} />       
@@ -33,7 +45,7 @@ class VoteForm extends Component{
                         </div>
                         <div className="form-group">
                             <label htmlFor="email">Email Address</label>
-                            <input type="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter Email" name="email" value={this.props.data.email}/>
+                            <input type="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter Email" name="email" value={this.props.data.email} pattern='+@[a-z0-9.-]+\.[a-z]{2,4}$/'/>
                             <small id="emailHelp" className="form-text text-muted">We'll never send you anything or share your email with anyone else.</small>
                         </div>
                         <div className="form-group">
