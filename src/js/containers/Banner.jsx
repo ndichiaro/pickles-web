@@ -76,7 +76,12 @@ class Banner extends Component {
                 this.setState({
                     error: false,
                     success: true,
-                    message: ''
+                    message: '',
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                    pickleType: '',
+                    zipCode: ''
                 })
             }
         });

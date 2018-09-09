@@ -31,16 +31,16 @@ class VoteForm extends Component{
     }
     render(){
         return(
-            <div className="col-md-4">
+            <div className="col-lg-4">
                 <div className="vote-form">
                     {this.renderError()}
                     <form onChange={this.props.onChange} onSubmit={this.props.onSubmit}>
                         <div className="form-row">
-                            <div className="form-group col-md-6">
+                            <div className="form-group col-lg-6">
                                 <label htmlFor="txtFirstName">First Name</label>
                                 <input type="text" className="form-control" id="txtFirstName" placeholder="Enter First Name" name="firstName" value={this.props.data.firstName} />       
                             </div>
-                            <div className="form-group col-md-6">
+                            <div className="form-group col-lg-6">
                                 <label htmlFor="txtLastName">Last Name</label>
                                 <input type="text" className="form-control" id="txtLastName" placeholder="Enter Last Name" name="lastName" value={this.props.data.lastName}/>       
                             </div>
@@ -51,7 +51,7 @@ class VoteForm extends Component{
                             <small id="emailHelp" className="form-text text-muted">We'll never send you anything or share your email with anyone else.</small>
                         </div>
                         <div className="form-row">
-                            <div className="form-group col-md-6">
+                            <div className="form-group col-lg-6">
                                 <label htmlFor="pickleTypeSelect">Pickle Type</label>
                                 <select className="form-control" id="pickleTypeSelect" required name="pickleType" value={this.props.data.pickleType}>
                                     <option value="">Select Pickle Type</option>
