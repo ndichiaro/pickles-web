@@ -7,3 +7,7 @@
     color: #5cb85c;
     font-weight: bold;
 }
+
+h1, p{
+    font-family: "Segoe UI";
+}

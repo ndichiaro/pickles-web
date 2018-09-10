@@ -3,3 +3,25 @@
     background-size: cover;
     height: 500px;
 }
+
+.banner h1{
+    color: white;
+    font-weight: 500;
+    font-size: 64px;
+}
+
+.banner p{
+    color: #d5dce8;
+    font-size: 21px;
+    font-weight: 400;
+}
+
+.banner-text{
+    padding: 120px 50px;
+}
+
+@media only screen and (max-width: 992px) {
+    .jumbotron {
+        height: 400px;
+    }
+}

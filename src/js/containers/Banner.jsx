@@ -99,10 +99,20 @@ class Banner extends Component {
             zipCode: this.state.zipCode
         }
         return(
-            <div className="jumbotron">
-                <VoteForm data={data} onChange={this.handleVoteFormChange} 
-                    onSubmit={this.handleVoteFormSubmit} error={this.state.error} 
-                    success={this.state.success} message={this.state.message} />
+            <div className="jumbotron banner">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-6 banner-text">
+                            <h1 className="display-4">Love pickles?</h1>
+                            <p className="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+                        </div>
+                        <div className="col-lg-6">
+                            <VoteForm data={data} onChange={this.handleVoteFormChange} 
+                                onSubmit={this.handleVoteFormSubmit} error={this.state.error} 
+                                success={this.state.success} message={this.state.message} />
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
