@@ -60,22 +60,21 @@ class DonutPieChart extends Component{
     }
 
     render(){
-        const data = [{name: 'Group A', value: 400}, {name: 'Group B', value: 300},
-                  {name: 'Group C', value: 300}, {name: 'Group D', value: 200}];
-        const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
         return(
-            <PieChart width={650} height={650} onMouseLeave={this.onPieChartLeave}>
+            <PieChart width={this.props.width} height={this.props.height} 
+                onMouseLeave={this.onPieChartLeave}>
                 <Pie
-                    data={data}
-                    outerRadius={200}
-                    innerRadius={140}
+                    data={this.props.data}
+                    outerRadius={this.props.outerRadius}
+                    innerRadius={this.props.innerRadius}
                     activeIndex={this.state.activeIndex}
                     activeShape={this.renderActiveShape}
                     onMouseEnter={this.onPieEnter}
-                    dataKey="value"
-                    nameKey="name"
+                    dataKey={this.props.dataKey}
+                    nameKey={this.props.nameKey}
                 >
-                    { data.map((entry, index) => <Cell key={index} fill={COLORS[index % COLORS.length]}/>) }
+                    { this.props.data.map((entry, index) => <Cell key={index} 
+                        fill={this.props.colors[index % this.props.colors.length]}/>) }
                 </Pie>
             </PieChart>
         )
