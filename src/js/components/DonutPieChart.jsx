@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { PieChart, Pie, Sector, Cell } from 'recharts';
+import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
 
 class DonutPieChart extends Component{
     constructor(props){
@@ -26,7 +26,7 @@ class DonutPieChart extends Component{
             that.setState({
                 activeIndex: -1,
             });
-        }, 500);
+        }, 250);
     }
 
     renderActiveShape(props){
@@ -61,22 +61,24 @@ class DonutPieChart extends Component{
 
     render(){
         return(
-            <PieChart width={this.props.width} height={this.props.height} 
-                onMouseLeave={this.onPieChartLeave}>
-                <Pie
-                    data={this.props.data}
-                    outerRadius={this.props.outerRadius}
-                    innerRadius={this.props.innerRadius}
-                    activeIndex={this.state.activeIndex}
-                    activeShape={this.renderActiveShape}
-                    onMouseEnter={this.onPieEnter}
-                    dataKey={this.props.dataKey}
-                    nameKey={this.props.nameKey}
-                >
-                    { this.props.data.map((entry, index) => <Cell key={index} 
-                        fill={this.props.colors[index % this.props.colors.length]}/>) }
-                </Pie>
-            </PieChart>
+            <ResponsiveContainer width="100%" height={this.props.height}>
+                <PieChart width={this.props.width} height={this.props.height} 
+                    onMouseLeave={this.onPieChartLeave}>
+                    <Pie
+                        data={this.props.data}
+                        outerRadius={this.props.outerRadius}
+                        innerRadius={this.props.innerRadius}
+                        activeIndex={this.state.activeIndex}
+                        activeShape={this.renderActiveShape}
+                        onMouseEnter={this.onPieEnter}
+                        dataKey={this.props.dataKey}
+                        nameKey={this.props.nameKey}
+                    >
+                        { this.props.data.map((entry, index) => <Cell key={index} 
+                            fill={this.props.colors[index % this.props.colors.length]}/>) }
+                    </Pie>
+                </PieChart>
+            </ResponsiveContainer>
         )
     }
 }
