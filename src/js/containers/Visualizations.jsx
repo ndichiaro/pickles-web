@@ -22,14 +22,16 @@ class Visualizations extends Component{
                 this.setState({
                     votes: data
                 });
-                return data;
-            })
-            .then(data => {
-                let chartData = this.groomChartData(data);
+            });
+    }
+
+    componentDidUpdate(prevProps){
+        if(prevProps.pickleTypes !== this.props.pickleTypes){
+            let chartData = this.groomChartData(this.props.votes);
                 this.setState({
                     chartData
-                })
-            });
+                });
+        }
     }
 
     /**
@@ -49,14 +51,10 @@ class Visualizations extends Component{
                 value: votes.length
             });
         });
-        console.log(chartData);
         return chartData;
     }
 
     render(){
-        const data = [{name: 'Group A', value: 400}, {name: 'Group B', value: 300},
-                  {name: 'Group C', value: 300}, {name: 'Group D', value: 200}];
-
         return(
             <div className="container">
                 <PickleTypeChart data={this.state.chartData}/>        
