@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DonutPieChart from '../components/DonutPieChart';
+import DonutPieChart from './DonutPieChart';
 
 class PickleTypeChart extends Component{
     render(){

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Banner from './Banner';
-import PickleTypeChart from './PickleTypeChart';
+import PickleTypeChart from '../components/PickleTypeChart';
 import '../../css/App.css';
 
 class App extends Component {
