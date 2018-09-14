@@ -22,6 +22,14 @@
 
 @media only screen and (max-width: 992px) {
     .jumbotron {
-        height: 400px;
+        height: 905px;
+        background-size: 100% 400px;
+        background-repeat: no-repeat;
+        background-color: white;
+    }
+
+    .banner-text{
+        margin-top: 0px;
+        margin-bottom: 175px;
     }
 }
