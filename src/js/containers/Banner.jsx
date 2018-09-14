@@ -96,7 +96,7 @@ class Banner extends Component {
                     <div className="row">
                         <div className="col-lg-6 banner-text">
                             <h1 className="display-4">Love pickles?</h1>
-                            <p className="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+                            <p className="lead">Tell us how you really feel. We want to know that jar you break into on the drive home from the grocery store, or the one that haunts you from the fridge at 1am.</p>
                         </div>
                         <div className="col-lg-6">
                             <VoteForm data={data} onChange={this.handleVoteFormChange} 
