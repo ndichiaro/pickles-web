@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import VoteForm from '../components/VoteForm';
-import * as pickleTypesApi from '../api/pickleTypesApi';
 import * as votesApi from '../api/votesApi';
 import '../../css/Banner.css';
 
@@ -13,7 +12,6 @@ class Banner extends Component {
             lastName: '',
             email: '',
             pickleType: '',
-            pickleTypes: [],
             zipCode: '',
             latitude: '',
             longitude: '',
@@ -29,12 +27,6 @@ class Banner extends Component {
 
     componentDidMount(){
         navigator.geolocation.getCurrentPosition(this.getLocation)
-        pickleTypesApi.get()
-            .then((data) => {
-                this.setState({
-                    pickleTypes: data
-                });
-            });
     }
 
     getLocation(position){
@@ -95,7 +87,7 @@ class Banner extends Component {
             lastName: this.state.lastName,
             email: this.state.email,
             pickleType: this.state.pickleType,
-            pickleTypes: this.state.pickleTypes,
+            pickleTypes: this.props.pickleTypes,
             zipCode: this.state.zipCode
         }
         return(

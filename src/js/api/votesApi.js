@@ -9,3 +9,8 @@ export const save = (vote) => {
         body: JSON.stringify(vote)
     });
 };
+
+export const get = () => {
+    return fetch(`${configuration.apiUrl}/votes`)
+            .then((response) => response.json());
+};
