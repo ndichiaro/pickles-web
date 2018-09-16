@@ -22,12 +22,19 @@ class Visualizations extends Component{
                 this.setState({
                     votes: data
                 });
+                return data;
+            })
+            .then(data => {
+                let chartData = this.groomChartData(data);
+                this.setState({
+                    chartData
+                });
             });
     }
 
     componentDidUpdate(prevProps){
         if(prevProps.pickleTypes !== this.props.pickleTypes){
-            let chartData = this.groomChartData(this.props.votes);
+            let chartData = this.groomChartData(this.state.votes);
                 this.setState({
                     chartData
                 });
@@ -44,7 +51,7 @@ class Visualizations extends Component{
         let chartData = [];
 
         this.props.pickleTypes.forEach(type => {
-            let votes = this.state.votes.filter(vote => vote.pickleTypeId === type.id);
+            let votes = data.filter(vote => vote.pickleTypeId === type.id);
             
             chartData.push({
                 name: type.name,
