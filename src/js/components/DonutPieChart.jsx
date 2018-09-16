@@ -35,8 +35,9 @@ class DonutPieChart extends Component{
 
         return (
             <g>
-                <text x={cx} y={cy - 10} dy={8} textAnchor="middle" fill={fill}>{payload.name}</text>
-                <text x={cx} y={cy + 10} dy={8} textAnchor="middle" fill={fill}>{`${Math.round(percent * 100)}%`}</text>
+                <text x={cx} y={cy - 20} dy={8} textAnchor="middle" fill={fill}>{payload.name}</text>
+                <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>{`Votes: ${value}`}</text>
+                <text x={cx} y={cy + 20} dy={8} textAnchor="middle" fill={fill}>{`${Math.round(percent * 100)}%`}</text>
                 <Sector
                     cx={cx}
                     cy={cy}
