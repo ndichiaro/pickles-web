@@ -12,6 +12,7 @@ class Banner extends Component {
             lastName: '',
             email: '',
             pickleType: '',
+            pickleStyle: '',
             zipCode: '',
             latitude: '',
             longitude: '',
@@ -49,6 +50,7 @@ class Banner extends Component {
     handleVoteFormSubmit(event){
         votesApi.save({
             pickleTypeId: this.state.pickleType,
+            pickleStyleId: this.state.pickleStyle,
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             email: this.state.email,
@@ -73,6 +75,7 @@ class Banner extends Component {
                     lastName: '',
                     email: '',
                     pickleType: '',
+                    pickleStyle: '',
                     zipCode: ''
                 })
             }
@@ -87,7 +90,9 @@ class Banner extends Component {
             lastName: this.state.lastName,
             email: this.state.email,
             pickleType: this.state.pickleType,
+            pickleStyle: this.state.pickleStyle,
             pickleTypes: this.props.pickleTypes,
+            pickleStyles: this.props.pickleStyles,
             zipCode: this.state.zipCode
         }
         return(

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Banner from './Banner';
 import Visualizations from './Visualizations';
 import * as pickleTypesApi from '../api/pickleTypesApi';
+import * as pickleStylesApi from '../api/pickleStylesApi';
 import '../../css/App.css';
 
 class App extends Component {
@@ -9,7 +10,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      pickleTypes: []
+      pickleTypes: [],
+      pickleStyles: []
     }
   }
 
@@ -20,13 +22,25 @@ class App extends Component {
                     pickleTypes: data
                 });
             });
+    
+    pickleStylesApi.get()
+            .then((data) => {
+                this.setState({
+                    pickleStyles: data
+                });
+            });
   }
 
   render() {
+      let props = {
+        pickleTypes: this.state.pickleTypes,
+        pickleStyles: this.state.pickleStyles
+      }
+
       return (
       <div className="App">
-        <Banner pickleTypes={this.state.pickleTypes} />
-        <Visualizations pickleTypes={this.state.pickleTypes}/>
+        <Banner {...props} />
+        <Visualizations {...props} />
       </div>
     );
   }
