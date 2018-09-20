@@ -5,7 +5,7 @@ import '../../css/PickleTypeChart.css';
 class PickleTypeChart extends Component{
     render(){
         
-        const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+        const COLORS = ['#0f3a0f', '#155116', '#1c6b1e', '#258c28', '#30b534', '#3be540'];
 
         return(
             <div className="row">
