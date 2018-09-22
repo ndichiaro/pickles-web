@@ -17,9 +17,37 @@ class Visualizations extends Component{
             typeChartData: [],
             styleChartData: []
         }
+
+        this.getVotesData = this.getVotesData.bind(this);
     }
 
     componentDidMount(){
+        this.getVotesData();
+    }
+
+    componentDidUpdate(prevProps){
+        if(prevProps.pickleTypes !== this.props.pickleTypes){
+
+            let typeChartData = this.groomTypeChartData(this.state.votes);
+            let styleChartData = this.groomStyleChartData(this.state.votes);
+
+            this.setState({
+                typeChartData,
+                styleChartData
+            });
+        }
+
+        if(this.props.update){
+            this.getVotesData();
+            this.props.triggerUpdate(false);
+        }
+    }
+
+    /**
+     * @summary makes a call to the votes api to get the votes data then 
+     * calls the groom data funcitons for types and styles
+     */
+    getVotesData(){
         votesApi.get()
             .then(data => {
                 this.setState({
@@ -37,19 +65,7 @@ class Visualizations extends Component{
                 });
             });
     }
-
-    componentDidUpdate(prevProps){
-        if(prevProps.pickleTypes !== this.props.pickleTypes){
-            let typeChartData = this.groomTypeChartData(this.state.votes);
-            let styleChartData = this.groomStyleChartData(this.state.votes);
-
-            this.setState({
-                typeChartData,
-                styleChartData
-            });
-        }
-    }
-
+    
     /**
      * @summary Grooms the vote data into data the chart can use. Maps the 
      * pickle type name to the name property and counts the number of votes

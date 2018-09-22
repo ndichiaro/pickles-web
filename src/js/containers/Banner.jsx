@@ -77,7 +77,8 @@ class Banner extends Component {
                     pickleType: '',
                     pickleStyle: '',
                     zipCode: ''
-                })
+                });
+                this.props.triggerUpdate(true);
             }
         });
 

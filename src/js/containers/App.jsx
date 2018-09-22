@@ -11,8 +11,11 @@ class App extends Component {
 
     this.state = {
       pickleTypes: [],
-      pickleStyles: []
+      pickleStyles: [],
+      update: false
     }
+
+    this.triggerUpdate = this.triggerUpdate.bind(this);
   }
 
   componentDidMount(){
@@ -37,16 +40,26 @@ class App extends Component {
             });
   }
 
+  /**
+   * @summary Set the update state to trigger components to update
+   */
+  triggerUpdate(update){
+    this.setState({
+      update
+    });
+  }
+
   render() {
       let props = {
         pickleTypes: this.state.pickleTypes,
-        pickleStyles: this.state.pickleStyles
+        pickleStyles: this.state.pickleStyles,
+        triggerUpdate: this.triggerUpdate
       }
 
       return (
       <div className="App">
         <Banner {...props} />
-        <Visualizations {...props} />
+        <Visualizations {...props} update={this.state.update} />
       </div>
     );
   }
