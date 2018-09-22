@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PickleTypeChart from '../components/PickleTypeChart';
+import PickleStyleChart from '../components/PickleStyleChart';
 import * as votesApi from '../api/votesApi';
+import '../../css/Visualizations.css';
 
 /**
  * @summary A React container component that contains the visualization
@@ -12,7 +14,8 @@ class Visualizations extends Component{
 
         this.state = {
             votes: [],
-            chartData: []
+            typeChartData: [],
+            styleChartData: []
         }
     }
 
@@ -25,19 +28,25 @@ class Visualizations extends Component{
                 return data;
             })
             .then(data => {
-                let chartData = this.groomChartData(data);
+                let typeChartData = this.groomTypeChartData(data);
+                let styleChartData = this.groomStyleChartData(data);
+
                 this.setState({
-                    chartData
+                    typeChartData,
+                    styleChartData
                 });
             });
     }
 
     componentDidUpdate(prevProps){
         if(prevProps.pickleTypes !== this.props.pickleTypes){
-            let chartData = this.groomChartData(this.state.votes);
-                this.setState({
-                    chartData
-                });
+            let typeChartData = this.groomTypeChartData(this.state.votes);
+            let styleChartData = this.groomStyleChartData(this.state.votes);
+
+            this.setState({
+                typeChartData,
+                styleChartData
+            });
         }
     }
 
@@ -47,24 +56,49 @@ class Visualizations extends Component{
      * and assigns to the value property
      * @param {*} data 
      */
-    groomChartData(data){
-        let chartData = [];
+    groomTypeChartData(data){
+        let typeChartData = [];
 
         this.props.pickleTypes.forEach(type => {
             let votes = data.filter(vote => vote.pickleTypeId === type.id);
             
-            chartData.push({
+            typeChartData.push({
                 name: type.name,
                 value: votes.length
             });
         });
-        return chartData;
+        return typeChartData;
+    }
+
+    /**
+     * @summary Grooms the vote data into data the chart can use. Maps the 
+     * pickle style name to the name property and counts the number of votes
+     * and assigns to the value property
+     * @param {*} data 
+     */
+    groomStyleChartData(data){
+        let styleChartData = [];
+
+        this.props.pickleStyles.forEach(style => {
+            let votes = data.filter(vote => vote.pickleStyleId === style.id);
+            
+            styleChartData.push({
+                name: style.name,
+                value: votes.length
+            });
+        });
+        return styleChartData;
     }
 
     render(){
         return(
             <div className="container">
-                <PickleTypeChart data={this.state.chartData}/>        
+                <div className="visualization-row">
+                    <PickleTypeChart data={this.state.typeChartData}/>
+                </div>
+                <div className="visualization-row">
+                    <PickleStyleChart data={this.state.styleChartData}/>        
+                </div>
             </div>
         );
     }

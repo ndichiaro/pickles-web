@@ -16,18 +16,24 @@ class App extends Component {
   }
 
   componentDidMount(){
+    let pickleTypes = [];
+    let pickleStyles = [];
+
     pickleTypesApi.get()
             .then((data) => {
-                this.setState({
-                    pickleTypes: data
-                });
-            });
-    
-    pickleStylesApi.get()
-            .then((data) => {
-                this.setState({
-                    pickleStyles: data
-                });
+                pickleTypes = data;
+            })
+            .then(() => {
+                pickleStylesApi.get()
+                  .then((data) => {
+                      pickleStyles = data;
+                  })
+                  .then(() => {
+                      this.setState({
+                          pickleTypes,
+                          pickleStyles
+                      })
+                  });
             });
   }
 
