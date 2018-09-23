@@ -1,4 +1,4 @@
-import { configuration } from '../configuration';
+import configuration from '../configuration.json';
 
 export const save = (vote) => {
     return fetch(`${configuration.apiUrl}/votes`, {
